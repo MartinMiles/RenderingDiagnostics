@@ -5,3 +5,12 @@ Drop this DLL into `\bin` folder and it will wrap all the components with the di
 No config patch even needed!
 
 Tested on **Habitat** above **Sitecore 9.2**
+
+## Output example
+
+```
+<!-- start-component='{ name: "HTML Metadata", uid: "e6ca18d8-321d-4105-9c38-0622e94be400", path: "~/Views/Metadata/PageMetadata.cshtml" }' -->
+    <title>Flexibility, Simplicity, Extensibility - Sitecore Example Site</title>
+    <meta name="keywords" content="sitecore"/>
+<!-- end-component='{ name: "HTML Metadata", uid: "e6ca18d8-321d-4105-9c38-0622e94be400", path: "~/Views/Metadata/PageMetadata.cshtml" }' -->
+```
