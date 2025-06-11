@@ -9,8 +9,9 @@ Tested on **Habitat** above **Sitecore 9.2**
 ## Output example
 
 ```
-<!-- start-component='{ name: "Metadata", uid: "e6ca18d8-321d-4105-9c38-0622e94be400", path: "~/Views/Metadata/Metadata.cshtml" }' -->
-    <title>Flexibility, Simplicity, Extensibility - Sitecore Example Site</title>
-    <meta name="keywords" content="sitecore"/>
-<!-- end-component='{ name: "Metadata", uid: "e6ca18d8-321d-4105-9c38-0622e94be400", path: "~/Views/Metadata/Metadata.cshtml" }' -->
+<!-- start-component='{ name: "HTML Metadata", id: "{E7AE3F87-CF66-40F2-A9F5-33ECF08BC777}", uid: "e6ca18d8-321d-4105-9c38-0622e94be400", placeholder: "head", path: "~/Views/Metadata/PageMetadata.cshtml" }' -->
+
+    <title>About Habitat - Habitat Sitecore Example Site</title>
+
+<!-- end-component='{ name: "HTML Metadata", id: "{E7AE3F87-CF66-40F2-A9F5-33ECF08BC777}", uid: "e6ca18d8-321d-4105-9c38-0622e94be400", placeholder: "head", path: "~/Views/Metadata/PageMetadata.cshtml" }' -->
 ```
