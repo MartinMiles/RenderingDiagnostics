@@ -22,7 +22,7 @@ namespace MyCompany.Feature.RenderDecorator
         }
     }
 
-    // This wrapper will writes JSON comment before and after the real view renders
+    // This wrapper will write JSON comment before and after the real view renders
     public class DiagnosticsView : IView
     {
         private readonly IView _inner;
@@ -36,21 +36,33 @@ namespace MyCompany.Feature.RenderDecorator
 
         public void Render(ViewContext viewContext, TextWriter writer)
         {
-            // Grab the Sitecore rendering context
+            // 1. Grab the Sitecore rendering context
             var rendering = RenderingContext.Current?.Rendering;
-            var name = rendering?.RenderingItem?.Name ?? "unknown";
-            var uid = rendering?.UniqueId.ToString() ?? Guid.Empty.ToString();
 
-            // JSON payload
-            var json = $"{{ name: \"{name}\", uid: \"{uid}\", path: \"{_viewPath}\" }}";
+            // 2. Extract the fields we need
+            var name = rendering?.RenderingItem?.Name
+                                  ?? "unknown";
+            var uid = rendering?.UniqueId.ToString()
+                                  ?? Guid.Empty.ToString();
+            var renderingItemId = rendering?.RenderingItem?.ID.ToString()
+                                  ?? Guid.Empty.ToString();
+            var placeholder = rendering?.Placeholder
+                                  ?? "unknown";
 
-            // Emit start marker
+            // 3. Build JSON payload
+            var json = $"{{ name: \"{name}\", "
+                     + $"id: \"{renderingItemId}\", "
+                     + $"uid: \"{uid}\", "
+                     + $"placeholder: \"{placeholder}\", "
+                     + $"path: \"{_viewPath}\" }}";
+
+            // 4. Emit start marker
             writer.Write($"\n<!-- start-component='{json}' -->\n");
 
-            // Delegate to the real RazorView
+            // 5. Render the real view
             _inner.Render(viewContext, writer);
 
-            // Emit end marker
+            // 6. Emit end marker
             writer.Write($"\n<!-- end-component='{json}' -->\n");
         }
     }
